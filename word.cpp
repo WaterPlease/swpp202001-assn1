@@ -8,10 +8,14 @@ int main(int argv, char **argc) {
   map<string, int> words;
   ifstream fin(argc[1]);
   string nextword;
-
-  while (!fin.eof()) {
-    fin >> nextword;
+  
+  while (fin >> nextword) {
     words[nextword]++;
+  }
+
+  if (words.empty()) {
+    cout << "Input is empty" << endl;
+    return 0;
   }
 
   auto answer = max_element(words.begin(), words.end(),
